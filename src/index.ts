@@ -9,12 +9,13 @@ const client = new Client({
 });
 
 const c = process.env.OWO_C || 5;
+const id = process.env.OWO_ID;
 
 const token = process.env.OWO_TOKEN;
 
-if (c == null || token == null) {
+if (c == null || token == null || id == null) {
   console.log(c, token);
-  throw "Please set OWO_C and OWO_TOKEN.";
+  throw "Please set OWO_C, OWO_ID and OWO_TOKEN.";
 }
 
 client.on("ready", () => {
@@ -22,7 +23,7 @@ client.on("ready", () => {
 });
 
 client.on("message", (msg) => {
-  if (msg.author.id == "942816078055239720") return;
+  if (msg.author.id == id) return;
   const p = chance.integer({ min: 0, max: 100 });
   console.log(msg.content, p);
   if (c <= p)
