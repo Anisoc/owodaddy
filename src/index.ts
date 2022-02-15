@@ -45,7 +45,6 @@ client.on(
     if (msg.author.id == id) return;
     const p = chance.integer({ min: 0, max: 100 });
     let owomsg = owo.uwuifySentence(msg.content);
-    console.log(msg.content, p);
     owomsg = owomsg.replace(/`/gm, "\\`");
     try {
       if (c >= p)
