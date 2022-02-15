@@ -10,9 +10,9 @@ const client = new Client({
 
 const owo = new Owo({
   spaces: {
-    faces: 0.825,
-    actions: 0.075,
-    stutters: 0.1,
+    faces: 0.15,
+    actions: 0.1,
+    stutters: 0.15,
   },
   words: 1,
   exclamations: 1,
