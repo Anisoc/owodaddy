@@ -26,7 +26,7 @@ client.on("message", (msg) => {
   if (msg.author.id == id) return;
   const p = chance.integer({ min: 0, max: 100 });
   console.log(msg.content, p);
-  if (c <= p)
+  if (c >= p)
     msg.reply({
       content: owo(msg.content),
       allowedMentions: { repliedUser: false },
