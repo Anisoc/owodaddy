@@ -10,7 +10,7 @@ const client = new Client({
 
 const owo = new Owo({
   spaces: {
-    faces: 0.5,
+    faces: 0.825,
     actions: 0.075,
     stutters: 0.1,
   },
@@ -44,12 +44,18 @@ client.on(
   }) => {
     if (msg.author.id == id) return;
     const p = chance.integer({ min: 0, max: 100 });
+    let owomsg = owo.uwuifySentence(msg.content);
     console.log(msg.content, p);
-    if (c >= p)
-      msg.reply({
-        content: owo.uwuifySentence(msg.content),
-        allowedMentions: { repliedUser: false },
-      });
+    owomsg = owomsg.replace(/`/gm, "\\`");
+    try {
+      if (c >= p)
+        msg.reply({
+          content: owomsg,
+          allowedMentions: { repliedUser: false },
+        });
+    } catch (err) {
+      console.log(err);
+    }
   }
 );
 
