@@ -48,11 +48,22 @@ client.on(
     owomsg = owomsg.replace(/`/gm, "\\`");
     try {
       if (c >= p)
-        msg.reply({
-          content: owomsg,
-          allowedMentions: { repliedUser: false },
-        });
+        if (owomsg.length <= 2000)
+          msg.reply({
+            content: owomsg,
+            allowedMentions: { repliedUser: false },
+          });
+        else {
+          msg.reply({
+            content: "sowwy OwO youw message is too wong.",
+            allowedMentions: { repliedUser: false },
+          });
+        }
     } catch (err) {
+      msg.reply({
+        content: "sowwy OwO something *sweats* went wwong.",
+        allowedMentions: { repliedUser: false },
+      });
       console.log(err);
     }
   }
